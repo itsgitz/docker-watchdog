@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
 	"github.com/docker/docker/api/types"
@@ -44,21 +43,21 @@ func getStoppedContainers() {
 		panic(err)
 	}
 
-	fmt.Printf("Search for stopped containers (exited|paused|dead) ... \n")
+	informationText.Printf("[*] Search for stopped containers (exited|paused|dead) ... \n")
 
 	//Return nothing if there are not stopped containers
 	//And continue detection ...
 	if len(containers) == 0 {
-		fmt.Println("All containers are running ...")
+		successText.Printf("[*] All containers are running ... \n\n")
 		return
 	}
 
 	//Display all stopped containers information
-	fmt.Printf("\nFound not running containers! \n\n")
+	dangerText.Printf("\n[!] Stopped container is detected! \n\n")
 	for _, c := range containers {
-		fmt.Printf("ID: %v \n", c.ID[:10])
-		fmt.Printf("Name: %v \n", strings.Trim(c.Names[0], "/"))
-		fmt.Printf("Status: %v \n", c.Status)
-		fmt.Printf("State: %v \n\n", c.State)
+		dangerText.Printf("| ID: %v \n", c.ID[:10])
+		dangerText.Printf("| Name: %v \n", strings.Trim(c.Names[0], "/"))
+		dangerText.Printf("| Status: %v \n", c.Status)
+		dangerText.Printf("| State: %v \n\n", c.State)
 	}
 }
