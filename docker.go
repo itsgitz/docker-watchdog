@@ -10,7 +10,7 @@ import (
 	"github.com/docker/docker/client"
 )
 
-//Define not running containers state
+//Define stopped containers state
 //status=(paused|exited|dead)
 //src: https://docs.docker.com/engine/api/v1.41/#operation/ContainerList
 const (
@@ -44,14 +44,16 @@ func getStoppedContainers() {
 		panic(err)
 	}
 
-	fmt.Printf("Search for not running containers (exited|paused|dead) ... \n")
+	fmt.Printf("Search for stopped containers (exited|paused|dead) ... \n")
 
-	//
+	//Return nothing if there are not stopped containers
+	//And continue detection ...
 	if len(containers) == 0 {
 		fmt.Println("All containers are running ...")
 		return
 	}
 
+	//Display all stopped containers information
 	fmt.Printf("\nFound not running containers! \n\n")
 	for _, c := range containers {
 		fmt.Printf("ID: %v \n", c.ID[:10])
