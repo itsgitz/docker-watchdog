@@ -6,11 +6,12 @@ import (
 )
 
 func runWatcher() {
-	fmt.Println("Run docker containers watcher ...")
+	fmt.Printf("Run docker containers watcher ... \n\n")
 
 	ticker := time.NewTicker(3 * time.Second)
 
 	for range ticker.C {
-		fmt.Println("")
+		//Get all stopped containers information
+		getStoppedContainers()
 	}
 }
