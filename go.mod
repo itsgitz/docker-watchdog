@@ -1,4 +1,4 @@
-module docker-alert
+module docker-watchdog
 
 go 1.17
 
