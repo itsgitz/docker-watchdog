@@ -1,32 +1,59 @@
 package main
 
-import "github.com/spf13/viper"
+import (
+	"github.com/spf13/viper"
+)
 
 //Email configuration collections
-type Email struct {
-	Sender     string
-	Password   string
-	Recipient  string
-	SMTPServer string
-	SMTPPort   int
+
+type Config struct {
+	Host  Host  `mapstructure:"host"`
+	Email Email `mapstructure:"email"`
+	SMTP  SMTP  `mapstructure:"smtp"`
 }
 
-func setEmailConfig() (error, *Email) {
+type Host struct {
+	Address string
+}
+
+type Email struct {
+	Name       string
+	Sender     string
+	Password   string
+	Subject    string
+	Recipients []string
+	SMTP       SMTP
+	Host       Host
+}
+
+type SMTP struct {
+	Address string
+	Port    int
+}
+
+func setEmailConfig() (*Email, error) {
 	//Load configuration using viper
-	viper.SetConfigName(".env")
-	viper.SetConfigType("env")
-	viper.AddConfigPath(".")
+	viper.SetConfigName("config")
+	viper.SetConfigType("yaml")
+	viper.AddConfigPath("./conf")
+
 	err := viper.ReadInConfig()
 	if err != nil {
-		return err, nil
+		return nil, err
 	}
 
-	//Return email configuration
-	return nil, &Email{
-		Sender:     viper.GetString("EMAIL_SENDER"),
-		Password:   viper.GetString("EMAIL_PASSWORD"),
-		Recipient:  viper.GetString("EMAIL_RECIPIENT"),
-		SMTPServer: viper.GetString("SMTP_SERVER"),
-		SMTPPort:   viper.GetInt("SMTP_PORT"),
-	}
+	return &Email{
+		Name:       viper.GetString("email.name"),
+		Sender:     viper.GetString("email.sender"),
+		Password:   viper.GetString("email.password"),
+		Subject:    viper.GetString("email.subject"),
+		Recipients: viper.GetStringSlice("email.recipients"),
+		SMTP: SMTP{
+			Address: viper.GetString("smtp.address"),
+			Port:    viper.GetInt("smtp.port"),
+		},
+		Host: Host{
+			Address: viper.GetString("host.address"),
+		},
+	}, nil
 }
