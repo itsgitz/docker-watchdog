@@ -1,0 +1,13 @@
+host:
+  address: ""
+
+email:
+  name: ""
+	sender: ""
+	password: ""
+	recipients:
+		- "anggit@isi.co.id"
+
+smtp:
+	server: "smtps.atisicloud.com"
+	port: 587
