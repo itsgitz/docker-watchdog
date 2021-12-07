@@ -19,7 +19,8 @@ $ ./docker-watchdog
 
 # Todo
 
-* Send alert email
+* Use redis for store email cache. Email cache is used for checking containers ID of the latest email after sended to recipient.
+If containers ID is same with the latest email, don't send alert email again. It's prevent email spaming.
 
 # Contributor
 
