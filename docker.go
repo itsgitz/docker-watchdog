@@ -60,4 +60,7 @@ func getStoppedContainers() {
 		dangerText.Printf("| Status: %v \n", c.Status)
 		dangerText.Printf("| State: %v \n\n", c.State)
 	}
+
+	//Send alert email
+	sendEmailAlert()
 }
