@@ -1,3 +1,5 @@
 docker-watchdog
 main
 build
+.env
+config.yaml
