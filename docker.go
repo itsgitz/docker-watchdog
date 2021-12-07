@@ -62,5 +62,5 @@ func getStoppedContainers() {
 	}
 
 	//Send alert email
-	sendEmailAlert()
+	sendEmailAlert(containers)
 }
