@@ -1,10 +1,12 @@
 host:
   address: ""
+  portainer_port: 9443
 
 email:
-  name: ""
+  name: "Docker Watchdog"
 	sender: ""
 	password: ""
+  subject: "Docker Containers Alert - Stopped Containers Detected"
 	recipients:
 		- "anggit@isi.co.id"
 
