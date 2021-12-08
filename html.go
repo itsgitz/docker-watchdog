@@ -7,6 +7,12 @@ import (
 	"github.com/docker/docker/api/types"
 )
 
+type HTMLDataBind struct {
+	HostAddress      string
+	PortainerAddress string
+	Container        []Container
+}
+
 type Container struct {
 	ID     string
 	Name   string
@@ -34,22 +40,39 @@ func setHTMLBody(containers []types.Container, config *Config) (*string, error) 
 
 	const htmlTemplate = `
 		<div>
-			{{ range . }}
-			<div>
-				<p>
-					<b>ID</b>: {{ .ID }}
-				</p>
-				<p>
-					<b>Name</b>: {{ .Name }}
-				</p>
-				<p>
-					<b>Status</b>: {{ .Status }}
-				</p>
-				<p>
-					<b>State</b>: {{ .State }}
-				</p>
-			</div>
-			{{ end }}
+			<b>Docker Watchdog</b>
+			has detected stopped containers on your server ({{ .HostAddress }})
+			<div style="padding: 3px;"></div>
+		</div>
+		<div>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<thead>
+					<tr>
+						<th><b>ID</b></th>
+						<th><b>Name</b></th>
+						<th><b>Status</b></th>
+						<th><b>State</b></th>
+					</tr>
+				</thead>	
+				{{ range .Container }}
+				<tr>
+					<td>{{ .ID }}</td>
+					<td>{{ .Name }}</td>
+					<td>{{ .Status }}</td>
+					<td>
+						<span style="color: red;">
+							<b>{{ .State }}</b>
+						</span>
+					</td>
+				</tr>
+				{{ end }}
+			</table>	
+		</div>
+		<div>
+			<div style="padding: 3px;"></div>
+			<a href="{{ .PortainerAddress }}" target="__blank">
+				Check on Portainer
+			</a>
 		</div>
 	`
 
@@ -58,10 +81,21 @@ func setHTMLBody(containers []types.Container, config *Config) (*string, error) 
 		return nil, err
 	}
 
+	//Set container data for bind with html
 	var containerData []Container
 	containerData = setContainerDataForHTML(containers)
 
-	err = h.Execute(&body, &containerData)
+	//Set portainer address
+	var portainerAddress = setPortainerAddress(config)
+
+	//Populate the HTML data bind
+	var htmlDataBind HTMLDataBind = HTMLDataBind{
+		HostAddress:      config.Host.Address,
+		PortainerAddress: portainerAddress,
+		Container:        containerData,
+	}
+
+	err = h.Execute(&body, &htmlDataBind)
 	if err != nil {
 		return nil, err
 	}
