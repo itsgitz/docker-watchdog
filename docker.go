@@ -43,7 +43,7 @@ func getStoppedContainers() {
 		panic(err)
 	}
 
-	informationText.Printf("[*] Search for stopped containers (exited|paused|dead) ... \n")
+	informationText.Printf("[*] Searching for stopped containers (exited|paused|dead) ... \n")
 
 	//Return nothing if there are not stopped containers
 	//And continue detection ...
