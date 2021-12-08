@@ -13,6 +13,7 @@ If there are stopped containers detected, `Docker Watchdog` will send an alert e
 # Usage
 ```shell
 $ cd docker-watchdog
+$ mv conf/config_example.yaml conf/config.yaml
 $ go build
 $ ./docker-watchdog
 ```
