@@ -4,56 +4,48 @@ import (
 	"github.com/spf13/viper"
 )
 
-//Email configuration collections
-
+//Docker Watchdog configuration collections
 type Config struct {
 	Host  Host  `mapstructure:"host"`
 	Email Email `mapstructure:"email"`
 	SMTP  SMTP  `mapstructure:"smtp"`
 }
 
+//Host or VM data collections
+//Address and  PortainerPort
 type Host struct {
-	Address string
+	Address       string `mapstructure:"address"`
+	PortainerPort int    `mapstructure:"portainer_port"`
 }
 
 type Email struct {
-	Name       string
-	Sender     string
-	Password   string
-	Subject    string
-	Recipients []string
-	SMTP       SMTP
-	Host       Host
+	Name       string   `mapstructure:"name"`
+	Sender     string   `mapstructure:"sender"`
+	Password   string   `mapstructure:"password"`
+	Subject    string   `mapstructure:"subject"`
+	Recipients []string `mapstructure:"recipients"`
 }
 
 type SMTP struct {
-	Address string
-	Port    int
+	Address string `mapstructure:"address"`
+	Port    int    `mapstructure:"port"`
 }
 
-func setEmailConfig() (*Email, error) {
+func setConfiguration() (*Config, error) {
 	//Load configuration using viper
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./conf")
 
-	err := viper.ReadInConfig()
-	if err != nil {
+	if err := viper.ReadInConfig(); err != nil {
 		return nil, err
 	}
 
-	return &Email{
-		Name:       viper.GetString("email.name"),
-		Sender:     viper.GetString("email.sender"),
-		Password:   viper.GetString("email.password"),
-		Subject:    viper.GetString("email.subject"),
-		Recipients: viper.GetStringSlice("email.recipients"),
-		SMTP: SMTP{
-			Address: viper.GetString("smtp.address"),
-			Port:    viper.GetInt("smtp.port"),
-		},
-		Host: Host{
-			Address: viper.GetString("host.address"),
-		},
-	}, nil
+	//Unmarshalling configuration
+	var config Config
+	if err := viper.Unmarshal(&config); err != nil {
+		return nil, err
+	}
+
+	return &config, nil
 }
