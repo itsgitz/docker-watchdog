@@ -1,6 +1,9 @@
 host:
   address: ""
-  portainer_port: 9443
+
+portainer:
+  address: ""
+  port: 9443
 
 email:
   name: "Docker Watchdog"
