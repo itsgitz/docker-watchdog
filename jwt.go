@@ -12,7 +12,8 @@ const (
 
 type JWTPayload struct {
 	jwt.StandardClaims
-	Containers []JWTContainersData `json:"containers"`
+	EmailRecipients []string            `json:"email_recipients"`
+	Containers      []JWTContainersData `json:"containers"`
 }
 
 type JWTContainersData struct {
@@ -20,8 +21,10 @@ type JWTContainersData struct {
 	State string `json:"state"`
 }
 
-func encodeToJWT(containers []types.Container) (*string, error) {
-	claims := JWTPayload{}
+func encodeToJWT(containers []types.Container, config *Config) (*string, error) {
+	claims := JWTPayload{
+		EmailRecipients: config.Email.Recipients,
+	}
 
 	for _, c := range containers {
 		claims.Containers = append(claims.Containers, JWTContainersData{

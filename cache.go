@@ -51,12 +51,12 @@ func isCacheFileExists(filename string) bool {
 //			"state": "{$container_statue}"
 //		]
 // }
-func isCached(containers []types.Container) (bool, error) {
+func isCached(containers []types.Container, config *Config) (bool, error) {
 	//If cache file is not exists, create a new cache file
 	//and write the token on new cache file
 	if !isCacheFileExists(cacheFile) {
 		//Encode containers data to string
-		tokenString, err := encodeToJWT(containers)
+		tokenString, err := encodeToJWT(containers, config)
 
 		//return error from encoding action
 		if err != nil {
@@ -78,7 +78,7 @@ func isCached(containers []types.Container) (bool, error) {
 	//is equal to new token
 
 	//encode a new data from current containers
-	newToken, err := encodeToJWT(containers)
+	newToken, err := encodeToJWT(containers, config)
 	if err != nil {
 		return false, err
 	}

@@ -14,7 +14,7 @@ func sendEmailAlert(containers []types.Container) {
 		panic(err)
 	}
 
-	emailCached, err := isCached(containers)
+	emailCached, err := isCached(containers, config)
 	if err != nil {
 		panic(err)
 	}
