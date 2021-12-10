@@ -18,6 +18,13 @@ const (
 	DeadState   = "dead"   //Dead
 )
 
+type Container struct {
+	ID     string
+	Name   string
+	Status string
+	State  string
+}
+
 func getStoppedContainers() {
 	ctx := context.Background()
 

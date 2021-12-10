@@ -13,13 +13,6 @@ type HTMLDataBind struct {
 	Container        []Container
 }
 
-type Container struct {
-	ID     string
-	Name   string
-	Status string
-	State  string
-}
-
 func setContainerDataForHTML(containers []types.Container) []Container {
 	var container []Container
 
