@@ -9,7 +9,7 @@ email:
   name: "Docker Watchdog"
 	sender: ""
 	password: ""
-  subject: "Docker Containers Alert - Stopped Containers Detected"
+  subject: "Docker Watchdog - Stopped Containers Detected (alert)"
 	recipients:
 		- "anggit@isi.co.id"
 
