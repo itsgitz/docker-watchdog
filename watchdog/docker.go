@@ -1,4 +1,4 @@
-package main
+package watchdog
 
 import (
 	"context"
@@ -7,6 +7,7 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/client"
+	"github.com/spf13/cobra"
 )
 
 //Define stopped containers state
@@ -25,7 +26,7 @@ type Container struct {
 	State  string
 }
 
-func getStoppedContainers() {
+func (w *Watchdog) getStoppedContainers() {
 	ctx := context.Background()
 
 	//Create new API client
@@ -34,7 +35,7 @@ func getStoppedContainers() {
 	//src: https://pkg.go.dev/github.com/docker/docker/client#WithAPIVersionNegotiation
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	if err != nil {
-		panic(err)
+		cobra.CheckErr(err)
 	}
 
 	//Get all containers
@@ -47,27 +48,27 @@ func getStoppedContainers() {
 		),
 	})
 	if err != nil {
-		panic(err)
+		cobra.CheckErr(err)
 	}
 
-	informationText.Printf("[*] Searching for stopped containers (exited|paused|dead) ... \n")
+	InformationText.Printf("[*] Searching for stopped containers (exited|paused|dead) ... \n")
 
 	//Return nothing if there are not stopped containers
 	//And continue detection ...
 	if len(containers) == 0 {
-		successText.Printf("[*] All containers are running ... \n\n")
+		SuccessText.Printf("[*] All containers are running ... \n\n")
 		return
 	}
 
 	//Display all stopped containers information
-	dangerText.Printf("\n[!] Stopped container is detected! \n\n")
+	DangerText.Printf("\n[!] Stopped container is detected! \n\n")
 	for _, c := range containers {
-		dangerText.Printf("| ID: %v \n", c.ID[:10])
-		dangerText.Printf("| Name: %v \n", strings.Trim(c.Names[0], "/"))
-		dangerText.Printf("| Status: %v \n", c.Status)
-		dangerText.Printf("| State: %v \n\n", c.State)
+		DangerText.Printf("| ID: %v \n", c.ID[:10])
+		DangerText.Printf("| Name: %v \n", strings.Trim(c.Names[0], "/"))
+		DangerText.Printf("| Status: %v \n", c.Status)
+		DangerText.Printf("| State: %v \n\n", c.State)
 	}
 
 	//Send alert email
-	sendEmailAlert(containers)
+	w.sendEmailAlert(containers)
 }

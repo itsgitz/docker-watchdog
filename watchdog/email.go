@@ -1,20 +1,16 @@
-package main
+package watchdog
 
 import (
 	"github.com/docker/docker/api/types"
+	"github.com/spf13/cobra"
 	"gopkg.in/gomail.v2"
 )
 
 const htmlContentType = "text/html"
 
-func sendEmailAlert(containers []types.Container) {
+func (w *Watchdog) sendEmailAlert(containers []types.Container) {
 	//Load initial configuration
-	config, err := setConfiguration()
-	if err != nil {
-		panic(err)
-	}
-
-	emailCached, err := isCached(containers, config)
+	emailCached, err := isCached(containers, w.Config)
 	if err != nil {
 		panic(err)
 	}
@@ -24,25 +20,36 @@ func sendEmailAlert(containers []types.Container) {
 		//Initialize gomail email header and body
 		m := gomail.NewMessage()
 		m.SetHeaders(map[string][]string{
-			"From":    {m.FormatAddress(config.Email.Sender, config.Email.Name)},
-			"To":      config.Email.Recipients,
-			"Subject": {config.Email.Subject},
+			"From": {
+				m.FormatAddress(w.Config.Email.Sender, w.Config.Email.Name),
+			},
+			"To":      w.Config.Email.Recipients,
+			"Subject": {w.Config.Email.Subject},
 		})
 
 		//Set HTML format for email body
-		emailBody, err := setEmailBody(containers, config)
+		emailBody, err := setEmailBody(containers, w.Config)
 		if err != nil {
-			panic(err)
+			cobra.CheckErr(err)
 		}
 		m.SetBody(htmlContentType, *emailBody)
 
 		//Define gomail email client
-		d := gomail.NewDialer(config.SMTP.Address, config.SMTP.Port, config.Email.Sender, config.Email.Password)
+		d := gomail.NewDialer(
+			w.Config.SMTP.Address,
+			w.Config.SMTP.Port,
+			w.Config.Email.Sender,
+			w.Config.Email.Password,
+		)
 
 		//Send email to recipients
-		informationText.Printf("[*] Sending email alert to: %v \n", config.Email.Recipients)
+		InformationText.Printf(
+			"[*] Sending email alert to: %v \n",
+			w.Config.Email.Recipients,
+		)
+
 		if err := d.DialAndSend(m); err != nil {
-			panic(err)
+			cobra.CheckErr(err)
 		}
 	}
 }

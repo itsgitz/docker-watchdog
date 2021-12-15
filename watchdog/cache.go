@@ -1,4 +1,4 @@
-package main
+package watchdog
 
 import (
 	"os"
@@ -28,6 +28,18 @@ func writeCache(jwtString string) error {
 	}
 
 	return nil
+}
+
+//removeCache remove the cache file
+func removeCache() {
+	file := isCacheFileExists(cacheFile)
+
+	//Remove the cache file if exist
+	if file {
+		err := os.Remove(cacheFile)
+		InformationText.Printf("[*] Removing cache file\n")
+		InformationText.Printf("[!] %v \n", err)
+	}
 }
 
 //isCacheFileExists check the email cache file in /tmp directory
