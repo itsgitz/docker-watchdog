@@ -12,11 +12,17 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 * Go Version: `go1.17.2 linux/amd64`
 
 ## Usage
+
+1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`
 ```shell
 $ cd docker-watchdog
-$ mv conf/config_example.yaml conf/config.yaml
 $ go build
-$ ./docker-watchdog
+$ ./docker-watchdog run
+```
+
+2. Also, you can specify your own configuration file path with option `--config my-docker-watchdog.yaml`
+```shell
+$ ./docker-watchdog run --config my-docker-watchdog.yaml
 ```
 
 # Todo
