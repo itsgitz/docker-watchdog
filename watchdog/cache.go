@@ -36,9 +36,8 @@ func removeCache() {
 
 	//Remove the cache file if exist
 	if file {
-		err := os.Remove(cacheFile)
+		_ = os.Remove(cacheFile)
 		InformationText.Printf("[*] Removing cache file\n")
-		InformationText.Printf("[!] %v \n", err)
 	}
 }
 
