@@ -26,7 +26,7 @@ import (
 
 const (
 	defaultCfgPath = "/opt"
-	defaultCfgFile = "docker-watchdog"
+	defaultCfgFile = ".docker-watchdog"
 )
 
 var cfgFile string
