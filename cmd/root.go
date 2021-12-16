@@ -66,7 +66,7 @@ func init() {
 		&cfgFile,
 		"config",
 		"",
-		"config file (default is $HOME/.docker-watchdog.yaml)",
+		"config file (default is /opt/.docker-watchdog.yaml)",
 	)
 
 	// Cobra also supports local flags, which will only run
@@ -90,9 +90,6 @@ func initConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		watchdog.InformationText.Fprintln(os.Stderr, "[*] Using config file:", viper.ConfigFileUsed())
-	} else if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-		watchdog.DangerText.Println("[!] Configuration file not found")
-		watchdog.CreateConfigurationFile(defaultCfgPath, defaultCfgFile)
 	}
 
 	//Unmarshalling the config value

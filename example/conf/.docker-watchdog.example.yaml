@@ -2,13 +2,13 @@
 host:
   # e.g 127.0.0.1, mydomain.com without protocol scheme like http or https
   # address: "127.0.0.1"
-  address: ""
+  address: "127.0.0.1"
 
 # Portainer, master address
 portainer:
   # e.g 127.0.0.1, portainer.domain.com without protocol scheme like http or https
   # address: "127.0.0.1"
-  address: ""
+  address: "127.0.0.1"
   port: 9443
 
 # Mail account that used by docker watchdog for sending email to recipients
@@ -17,13 +17,13 @@ email:
   name: "Docker Watchdog"
   
   # e.g docker@isi.co.id
-	sender: ""
+	sender: "docker@isi.co.id"
 	password: ""
   subject: "Docker Watchdog - Stopped Containers Detected (alert)"
 
   # Developer or System Administrator's emails
 	recipients:
-		- "anggit@isi.co.id"
+    - "anggit@isi.co.id"
 
 # SMTP Server
 smtp:

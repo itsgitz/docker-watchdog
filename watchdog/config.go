@@ -4,7 +4,6 @@ import (
 	"errors"
 
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 //Docker Watchdog configuration collections
@@ -114,17 +113,17 @@ func (w *Watchdog) checkConfig() {
 	}
 }
 
-//CreateConfigurationFile for create new configuration file
+//CreateConfigurationFile for create new docker-watchdog configuration file
 //on given path if not exist
-func CreateConfigurationFile(path, file string) {
-	//Write new configuration file
-	InformationText.Printf("[*] Create configuration file on %v \n", path)
+//func CreateConfigurationFile(path, file string) {
+//	//Write new configuration file
+//	InformationText.Printf("[*] Create configuration file on %v \n", path)
 
-	viper.SafeWriteConfig()
+//	viper.SafeWriteConfig()
 
-	filepath := path + "/" + file + ".yaml"
-	err := writeYAML(filepath)
-	if err != nil {
-		cobra.CheckErr(err)
-	}
-}
+//	filepath := path + "/" + file + ".yaml"
+//	err := writeYAML(filepath)
+//	if err != nil {
+//		cobra.CheckErr(err)
+//	}
+//}
