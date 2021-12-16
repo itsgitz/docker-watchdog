@@ -1,8 +1,20 @@
-package watchdog
+/*
+Copyright © 2021 PT Infinys System Indonesia <anggit@isi.co.id>
 
-import (
-	"time"
-)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+package watchdog
 
 //Watchdog data collections (struct)
 type Watchdog struct {
@@ -15,27 +27,4 @@ func (w *Watchdog) Run() {
 	go w.watcher()
 
 	select {}
-}
-
-func (w *Watchdog) watcher() {
-	w.initWatchDog()
-
-	ticker := time.NewTicker(3 * time.Second)
-
-	for range ticker.C {
-		//Get all stopped containers information
-		w.getStoppedContainers()
-	}
-}
-
-func (w *Watchdog) initWatchDog() {
-
-	//Before run the watcher, remove the cache file first
-	removeCache()
-
-	//Check config...
-	//If config is not exist, create new config
-	w.checkConfig()
-
-	SuccessText.Printf("[*] Run the Docker Watchdog \n")
 }
