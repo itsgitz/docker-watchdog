@@ -10,25 +10,63 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 
 ## Prerequisite
 * Go Version: `go1.17.2 linux/amd64`
+* Docker Engine: `20.10+`
+
+## Installation
+
+**Note**: The installation only tested on linux-like operating system (linux distro)
+
+### A. With `make` command
+1. Clone this repository
+2. In the root directory, type:
+
+```shell
+$ sudo make install
+```
+3. After installation, the `docker-watchdog` application will run as linux service. But, we have to specify configuration value
+on `/opt/.docker-watchdog.yaml`
+4. For configuration example you can see on [example/conf/.docker-watchdog.yaml](./example/conf/.docker-watchdog.example.yaml)
+
+### B. Build from source
+1. Use `go build` command
+
+```shell
+$ go build
+```
+
+2. The default executable output named `docker-watchdog`
 
 ## Usage
 
-1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`
+### A. Run with systemctl
+1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`.
+If you installing `docker-watchdog` with `make` command, you just simply run:
+
 ```shell
-$ cd docker-watchdog
-$ go build
+$ sudo systemctl start docker-watchdog
+```
+
+2. Make sure that the configuration value is correct. See [example configuration](./example/conf/.docker-watchdog.example.yaml)
+
+### B. Run with go executable
+
+1. If you build the application from source code, you can simply run:
+
+```shell
 $ ./docker-watchdog run
 ```
 
-2. Also, you can specify your own configuration file path with option `--config my-docker-watchdog.yaml`
+2. Default configuration path is `/opt/.docker-watchdog.yaml`
+3. Or you can specify your own configuration file with option `--config` 
+
 ```shell
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
 ```
 
+
 # Todo
 
-* Use redis for store email cache. Email cache is used for checking containers ID of the latest email after sended to recipient.
-If containers ID is same with the latest email, don't send alert email again. It's prevent email spaming.
+* Installation script on linux
 
 # Contributor
 
