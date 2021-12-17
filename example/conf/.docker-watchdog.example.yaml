@@ -17,15 +17,15 @@ email:
   name: "Docker Watchdog"
   
   # e.g docker@isi.co.id
-	sender: "docker@isi.co.id"
-	password: ""
+  sender: "docker@isi.co.id"
+  password: ""
   subject: "Docker Watchdog - Stopped Containers Detected (alert)"
 
   # Developer or System Administrator's emails
-	recipients:
+  recipients:
     - "anggit@isi.co.id"
 
 # SMTP Server
 smtp:
-	address: "smtps.atisicloud.com"
-	port: 587
+  address: "smtps.atisicloud.com"
+  port: 587
