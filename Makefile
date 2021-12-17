@@ -1,5 +1,5 @@
 install:
-	./linux/install-on-linux.sh
+	./linux/script/install-on-linux.sh
 
 uninstall:
-	./linux/uninstall-on-linux.sh
+	./linux/script/uninstall-on-linux.sh
