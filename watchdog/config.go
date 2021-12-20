@@ -112,18 +112,3 @@ func (w *Watchdog) checkConfig() {
 		)
 	}
 }
-
-//CreateConfigurationFile for create new docker-watchdog configuration file
-//on given path if not exist
-//func CreateConfigurationFile(path, file string) {
-//	//Write new configuration file
-//	InformationText.Printf("[*] Create configuration file on %v \n", path)
-
-//	viper.SafeWriteConfig()
-
-//	filepath := path + "/" + file + ".yaml"
-//	err := writeYAML(filepath)
-//	if err != nil {
-//		cobra.CheckErr(err)
-//	}
-//}
