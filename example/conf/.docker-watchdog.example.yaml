@@ -1,8 +1,8 @@
 # VM or Server (or even localhost machine)
 host:
   # e.g 127.0.0.1, mydomain.com without protocol scheme like http or https
-  # address: "127.0.0.1"
-  address: "127.0.0.1"
+  # address: "127.0.0.1 (my local)"
+  address: "127.0.0.1 (my local)"
 
 # Portainer, master address
 portainer:
