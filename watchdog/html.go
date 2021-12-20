@@ -34,7 +34,7 @@ func setHTMLBody(containers []types.Container, config *Config) (*string, error) 
 	const htmlTemplate = `
 		<div>
 			<b>Docker Watchdog</b>
-			has detected stopped containers on your server ({{ .HostAddress }})
+			has detected stopped containers on your server (<b>{{ .HostAddress }}</b>)
 			<div style="padding: 3px;"></div>
 		</div>
 		<div>
