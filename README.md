@@ -20,9 +20,10 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 1. Clone this repository
 2. In the root directory, type:
 
-```shell
-$ sudo make install
-```
+		```shell
+		$ sudo make install
+		```
+
 3. After installation, the `docker-watchdog` application will run as linux service. But, we have to specify configuration value
 on `/opt/.docker-watchdog.yaml`
 4. For configuration example you can see on [example/conf/.docker-watchdog.yaml](./example/conf/.docker-watchdog.example.yaml)
