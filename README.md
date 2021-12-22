@@ -11,11 +11,10 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 ## Prerequisite
 * Go Version: `go1.17.2 linux/amd64`
 * Docker Engine: `20.10+`
-* Only tested on Linux, but you can even use `docker-watchdog` by building it from the go source code for Windows and MacOS support
 
 ## Installation
 
-**Note**: The installation only tested on linux-like operating system (linux distro)
+**Note**: The installation only tested on linux-like operating system (linux distro), but you can even use `docker-watchdog` by building it from the go source code for Windows and MacOS support.
 
 ### A. With `make` command
 1. Clone this repository
