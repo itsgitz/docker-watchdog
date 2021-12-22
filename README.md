@@ -31,9 +31,9 @@ on `/opt/.docker-watchdog.yaml`
 ### B. Build from source
 1. Use `go build` command
 
-```shell
-$ go build
-```
+		```shell
+		$ go build
+		```
 
 2. The default executable output named `docker-watchdog`
 
@@ -43,9 +43,9 @@ $ go build
 1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`.
 If you installing `docker-watchdog` with `make` command, you just simply run:
 
-```shell
-$ sudo systemctl start docker-watchdog
-```
+		```shell
+		$ sudo systemctl start docker-watchdog
+		```
 
 2. Make sure that the configuration value is correct. See [example configuration](./example/conf/.docker-watchdog.example.yaml)
 
@@ -53,16 +53,16 @@ $ sudo systemctl start docker-watchdog
 
 1. If you build the application from source code, you can simply run:
 
-```shell
-$ ./docker-watchdog run
-```
+		```shell
+		$ ./docker-watchdog run
+		```
 
 2. Default configuration path is `/opt/.docker-watchdog.yaml`
 3. Or you can specify your own configuration file with option `--config` 
 
-```shell
-$ ./docker-watchdog run --config my-docker-watchdog.yaml
-```
+		```shell
+		$ ./docker-watchdog run --config my-docker-watchdog.yaml
+		```
 
 
 # Todo
