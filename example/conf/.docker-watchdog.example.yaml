@@ -16,7 +16,7 @@ portainer:
 email:
   name: "Docker Watchdog"
   
-  # e.g docker@isi.co.id
+  # e.g docker@myemail.com
   sender: "docker@myemail.com"
   password: ""
   subject: "Docker Watchdog - Stopped Containers Detected (alert)"
@@ -27,5 +27,5 @@ email:
 
 # SMTP Server
 smtp:
-  address: "smtp-relay.gmail.com"
+  address: "smtp.gmail.com"
   port: 587
