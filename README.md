@@ -20,7 +20,7 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 1. Clone this repository
 2. In the root directory, type:
 
-		```shell
+		```
 		$ sudo make install
 		```
 
@@ -31,7 +31,7 @@ on `/opt/.docker-watchdog.yaml`
 ### B. Build from source
 1. Use `go build` command
 
-		```shell
+		```
 		$ go build
 		```
 
@@ -43,7 +43,7 @@ on `/opt/.docker-watchdog.yaml`
 1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`.
 If you installing `docker-watchdog` with `make` command, you just simply run:
 
-		```shell
+		```
 		$ sudo systemctl start docker-watchdog
 		```
 
@@ -53,14 +53,14 @@ If you installing `docker-watchdog` with `make` command, you just simply run:
 
 1. If you build the application from source code, you can simply run:
 
-		```shell
+		```
 		$ ./docker-watchdog run
 		```
 
 2. Default configuration path is `/opt/.docker-watchdog.yaml`
 3. Or you can specify your own configuration file with option `--config` 
 
-		```shell
+		```
 		$ ./docker-watchdog run --config my-docker-watchdog.yaml
 		```
 
