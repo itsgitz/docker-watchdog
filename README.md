@@ -71,4 +71,4 @@ If you installing `docker-watchdog` with `make` command, you just simply run:
 
 # Contributor
 
-Developer Team - PT Infinys System Indonesia 2022
+Anggit M Ginanjar <anggit.ginanjar@outlook.com>
