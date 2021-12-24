@@ -42,11 +42,9 @@ on `/opt/.docker-watchdog.yaml`
 ### A. Run with systemctl (Linux)
 1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`.
 If you installing `docker-watchdog` with `make` command, you just simply run:
-
 		```
 		$ sudo systemctl start docker-watchdog
 		```
-
 2. Make sure that the configuration value is correct. See [example configuration](./example/conf/.docker-watchdog.example.yaml)
 
 ### B. Run with go executable (Windows, MacOS, Linux)
