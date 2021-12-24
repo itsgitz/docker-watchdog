@@ -64,6 +64,10 @@ $ ./docker-watchdog run
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
 ```
 
+### C. Gmail Settings
+
+If you use Gmail, you have to allow **Less Secure App** on security setting (`Google Manage Account > Security > Less secure app access`)
+
 # Todo
 
 * Finish installation script on linux
