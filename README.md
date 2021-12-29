@@ -57,7 +57,7 @@ $ sudo systemctl start docker-watchdog
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
 ```
 
-2. You even can run the same command on Linux if you build the `docker-watchdog` from source code (with `go`)
+2. You can even run the same command on Linux if you build the `docker-watchdog` from source code (with `go`)
 
 ### C. Gmail Settings
 
