@@ -57,6 +57,8 @@ $ sudo systemctl start docker-watchdog
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
 ```
 
+2. You even can run the same command on Linux if you build the `docker-watchdog` from source code (with `go`)
+
 ### C. Gmail Settings
 
 If you use Gmail, you have to allow **Less Secure App** on security setting (`Google Manage Account > Security > Less secure app access`)
