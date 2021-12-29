@@ -68,9 +68,20 @@ $ ./docker-watchdog run --config my-docker-watchdog.yaml
 
 If you use Gmail, you have to allow **Less Secure App** on security setting (`Google Manage Account > Security > Less secure app access`)
 
+### D. Example Output
+
+1. Email:
+
+![alt text](./docs/images/docker-watchdog-email.png "Docker Watchdog - Email")
+
+2. Docker Watchdog Service
+
+![alt text](./docs/images/docker-watchdog-service.png "Docker Watchdog - Service")
+
 # Todo
 
 * Finish installation script on linux
+* Add notification using Telegram Bot
 
 # Contributor
 
