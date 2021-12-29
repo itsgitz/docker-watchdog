@@ -4,7 +4,7 @@ Docker Watchdog is a simple `Go` application that is used for detects all stoppe
 It uses [list containers endpoints](https://docs.docker.com/engine/api/v1.41/#operation/ContainerList) from
 [Docker Engine API](https://docs.docker.com/engine/api/v1.41/#).
 The watcher will gather all docker containers information repeatedly every 3 seconds using `go Ticker` function.
-If there are stopped containers detected, `Docker Watchdog` will send an email alert to Developer or System Administrator.
+If there are stopped containers detected in our system or cloud infrastructure, `Docker Watchdog` will send an email alert to Developer or System Administrator.
 
 # Getting Started
 
