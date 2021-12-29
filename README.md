@@ -18,6 +18,11 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 
 ### A. With `make` command
 1. Clone this repository
+
+```
+$ git clone https://github.com/itsgitz/docker-watchdog.git
+```
+
 2. In the root directory, type:
 
 ```
