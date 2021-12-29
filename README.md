@@ -56,7 +56,13 @@ $ sudo systemctl restart docker-watchdog
 1. If you run the `docker-watchdog` on MacOS or Windows, make sure to specify your own configuration file with option `--config` 
 
 ```
+# MacOS
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
+```
+
+```
+# Windows
+> docker-watchdog.exe run --config my-docker-watchdog.yaml
 ```
 
 2. You can even run the same command on Linux if you build the `docker-watchdog` from source code (with `go`)
