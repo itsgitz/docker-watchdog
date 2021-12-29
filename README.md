@@ -51,14 +51,7 @@ $ sudo systemctl start docker-watchdog
 
 ### B. Run with go executable (Windows, MacOS, Linux)
 
-1. If you build the application from source code, you can simply run:
-
-```
-$ ./docker-watchdog run
-```
-
-2. Default configuration path is `/opt/.docker-watchdog.yaml`
-3. Or you can specify your own configuration file with option `--config` 
+1. If you run the `docker-watchdog` on MacOS or Windows, make sure to specify your own configuration file with option `--config` 
 
 ```
 $ ./docker-watchdog run --config my-docker-watchdog.yaml
