@@ -47,7 +47,7 @@ $ go build
 ### A. Run with systemctl (Linux)
 1. If you installing `docker-watchdog` with `make` command, the application will run automatically as `systemd` service or Linux service.
 2. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`. It's strongly
-recommended to edit the configuration file on `/opt/.docker-watchdog.yaml` before run the `docker-watchdog` service.
+recommend to edit the configuration file on `/opt/.docker-watchdog.yaml` before run the `docker-watchdog` service.
 3. After you specify the configuration value on configuration file, you have to restart the `docker-watchdog` service.
 
 ```
