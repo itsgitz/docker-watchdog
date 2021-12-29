@@ -14,7 +14,7 @@ If there are stopped containers detected, `Docker Watchdog` will send an email a
 
 ## Installation
 
-**Note**: The installation only tested on linux-like operating system (linux distro), but you can even use `docker-watchdog` by building it from the go source code for Windows and MacOS support.
+**Note**: The installation only tested on Linux-Like operating system (linux distro), but you can even use `docker-watchdog` by building it from the go source code for Windows and MacOS support.
 
 ### A. With `make` command
 1. Clone this repository
@@ -40,14 +40,16 @@ $ go build
 ## Usage
 
 ### A. Run with systemctl (Linux)
-1. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`.
-If you installing `docker-watchdog` with `make` command, you just simply run:
+1. If you installing `docker-watchdog` with `make` command, the application will run as `systemd` service or Linux service.
+2. Docker Watchdog creates the default configuration file on `/opt/` directory called `.docker-watchdog.yaml`. It's strongly
+recommended to edit the configuration file on `/opt/.docker-watchdog.yaml` before run the `docker-watchdog` service.
+3. After you specify the configuration value on configuration file, you have to restart the `docker-watchdog` service.
 
 ```
-$ sudo systemctl start docker-watchdog
+$ sudo systemctl restart docker-watchdog
 ```
 
-2. Make sure that the configuration value is correct. See [example configuration](./example/conf/.docker-watchdog.example.yaml)
+4. Make sure that the configuration value is correct. See [example configuration](./example/conf/.docker-watchdog.example.yaml)
 
 ### B. Run with go executable (Windows, MacOS, Linux)
 
