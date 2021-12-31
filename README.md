@@ -26,6 +26,7 @@ $ git clone https://github.com/itsgitz/docker-watchdog.git
 2. In the root project directory, type:
 
 ```
+$ cd docker-watchdog
 $ sudo make install
 ```
 
