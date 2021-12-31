@@ -1,3 +1,5 @@
+# Copyright © 2022 Anggit M Ginanjar <anggit@isi.co.id> from PT Infinys System Indonesia 
+#
 # VM or Server (or even localhost machine)
 host:
   # e.g 127.0.0.1, mydomain.com without protocol scheme like http or https
