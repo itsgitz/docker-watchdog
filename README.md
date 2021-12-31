@@ -88,7 +88,7 @@ If you use Gmail, you have to allow **Less Secure App** on security setting (`Go
 
 # Todo
 
-* Finish installation script on linux
+* Finish installation script for linux
 * Add notification using Telegram Bot
 
 # Contributor
