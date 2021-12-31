@@ -23,7 +23,7 @@ If there are stopped containers detected in our system or cloud infrastructure, 
 $ git clone https://github.com/itsgitz/docker-watchdog.git
 ```
 
-2. In the root project directory, type:
+2. Use `make install` command in the root project directory:
 
 ```
 $ cd docker-watchdog
