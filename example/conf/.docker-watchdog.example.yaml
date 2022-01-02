@@ -25,7 +25,7 @@ email:
 
   # Developer or System Administrator's emails
   recipients:
-    - "anggit.ginanjar@outlook.com"
+    - "anggit.ginanjar.dev@gmail.com"
 
 # SMTP Server
 smtp:

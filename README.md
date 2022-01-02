@@ -94,4 +94,4 @@ If you use Gmail, you have to allow **Less Secure App** on security setting (`Go
 
 # Contributor
 
-Anggit M Ginanjar <anggit.ginanjar@outlook.com>
+Anggit M Ginanjar <anggit.ginanjar.dev@gmail.com>
